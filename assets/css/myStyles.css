@@ -1,0 +1,8 @@
+.student-documents .title {
+  width: 100%;
+  margin: 15px 0 10px;
+  border-bottom: 0.3px solid rgba(0, 0, 0, 0.15);
+}
+.student-documents .title:not(:first-of-type) {
+  padding-top: 10px;
+}/*# sourceMappingURL=myStyles.css.map */

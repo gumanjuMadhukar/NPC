@@ -1,0 +1,37 @@
+@php
+use Illuminate\Support\Facades\Auth;
+$user = Auth::guard('subject_committee')->user();
+$committee_names = array();
+foreach($user->subject_committee_users as $subject_committee_user){
+    $committee_names[] = ($subject_committee_user->subject_committee->name);
+}
+$committee_name = implode(',', $committee_names);
+@endphp
+<div class="navbar-custom">
+    <ul class="list-unstyled topnav-menu float-end mb-0">
+        <li>
+            <a class="nav-link">
+               {{$user->name}}  (<b>{{ $committee_name }}</b>)
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" href="{{route('subject_committee-logout')}}">
+                <i class="fe-log-out"></i> Logout
+            </a>
+        </li>
+    </ul>
+    <div class="logo-box d-none d-sm-block">
+        <a href="./" class="logo logo-dark text-center">
+            <span class="logo-lg">
+                <img src="{{ asset('assets/images/logo.svg')}}" alt="{{env('APP_NAME')}}">
+            </span>
+        </a>
+    </div>
+    <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+        <li>
+            <button class="button-menu-mobile disable-btn waves-effect"> <i class="fe-menu"></i> </button>
+        </li>
+        
+    </ul>
+    <div class="clearfix"></div>
+</div>

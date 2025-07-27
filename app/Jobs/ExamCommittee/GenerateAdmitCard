@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Jobs\ExamCommittee;
+
+use App\Models\ExamApply;
+use App\Models\ExamLog;
+use App\Models\Program;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Carbon;
+
+class GenerateAdmitCard implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    public $data;
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
+    public function handle()
+    {
+        $exam_id = $this->data['exam_id'];
+        $program_id = $this->data['program_id'];
+        $status = 'progress';
+        $exam_applies = ExamApply::where([
+            'state' => 'exam_committee', 
+            'status' => 'progress', 
+            'exam_id' => $exam_id, 
+            'program_id' => $program_id,
+            'is_admit_card_generate' => 0,
+            ])->get();
+        
+        $last_symbol_record = ExamApply::where([
+            'state' => 'exam_committee', 
+            'status' => 'progress', 
+            'exam_id' => $exam_id, 
+            'program_id' => $program_id,
+            'is_admit_card_generate' => 1,
+            ])->count();
+        if($last_symbol_record){
+            $symbol_number = $last_symbol_record + 1;
+        }else{
+            $symbol_number = 1;
+        }
+            
+        if ($exam_applies->count() > 0) {
+            foreach ($exam_applies as $exam_apply) {
+                
+                // $subject_committee_users = SubjectCommitteeUser::where('subject_committee_id', $exam_apply->program->subject_committee->id)->count();
+                // $average = $subject_committee_users / 2;
+                // if ($exam_apply->subject_committee_count >= $symbol_number) {
+                //     $is_admit_card_generate = 1;
+                //     $remarks = 'Admit Card is generated';
+                //     $exam_log_remarks = 'Admit Card Generated';
+                //     $suject = 'Admit Card Generated';
+
+                //     ExamApply::where('id', $exam_apply->id)->update(
+                //         [
+                //             'rejected' => 0,
+                //             'is_admit_card_generate' => $is_admit_card_generate,
+                //             'remarks' => $remarks,
+                //         ]
+                //     );
+                //     $exam_log = new ExamLog;
+                //     $exam_log->user_id = $exam_apply->user_id;
+                //     $exam_log->exam_apply_id = $exam_apply->id;
+                //     $exam_log->system_user_id = $this->data['user_id'];
+                //     $exam_log->status = $status;
+                //     $exam_log->remarks = $exam_log_remarks;
+                //     $exam_log->save();
+
+                //     $email_data = [
+                //         'name' => $exam_apply->user->name,
+                //         'email' => $exam_apply->user->email,
+                //         'status' => $status,
+                //         'subject' => $suject,
+                //         'remarks' => $remarks,
+                //     ];
+                    // $jobToDispatch = (new ExamApplyStatusJob($email_data))->delay(Carbon::now()->addSeconds(1));
+                    // dispatch($jobToDispatch);
+                // }
+
+            }
+        }
+    }
+}
