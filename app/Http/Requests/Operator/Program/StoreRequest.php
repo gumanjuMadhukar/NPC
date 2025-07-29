@@ -31,7 +31,7 @@ class StoreRequest extends RestRequest
             'code' => 'required',
             'qualification' => 'required',
             'level_id' => 'required',
-            'subject_committee_id' => 'required',
+            // 'subject_committee_id' => 'required',
             'program_duration' => 'required|integer',
             'duration_type' => 'required',
             'program_type' => 'required',

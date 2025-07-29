@@ -43,7 +43,7 @@ class ProgramController extends Controller
         $data['action'] = route('operator-program-store');
         $data['row'] = Program::where('id', $id)->first();
         $data['levels'] = Level::where('status', 1)->get();
-        $data['subject_committees'] = SubjectCommittee::where('status', 1)->get();
+        // $data['subject_committees'] = SubjectCommittee::where('status', 1)->get();
         return view('operator.program.add', $data);
     }
 

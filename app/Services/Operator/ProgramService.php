@@ -73,12 +73,14 @@ class ProgramService
             $program->code = $request['code'];
             $program->qualification = $request['qualification'];
             $program->level_id = $request['level_id'];
-            $program->subject_committee_id = $request['subject_committee_id'];
+            // $program->subject_committee_id = $request['subject_committee_id'];
             $program->program_duration = $request['program_duration'];
             $program->duration_type = $request['duration_type'];
             $program->program_type = $request['program_type'];
             $program->has_exam = $request['has_exam'] ?? 0;
             $program->status = $request['status'] ?? 0;
+            // dd('Here I am Aarati, stucked in the program store', $program);
+
             $program->save();
             $response['error'] = null;
             return response()->json($response, $response['status']);
