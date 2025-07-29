@@ -80,7 +80,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        
+
+        'admit_card_reader' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'api' => [
             'driver' => 'sanctum',
             'provider' => 'users',
