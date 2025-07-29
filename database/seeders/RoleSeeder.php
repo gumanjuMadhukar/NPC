@@ -18,13 +18,16 @@ class RoleSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $data = [['name' => 'Student', 'auth_name' => 'student', 'created_at' => now(), 'updated_at' => now()],
+                 ['name' => 'Certificate Printer', 'auth_name' => 'cer', 'created_at' => now(), 'updated_at' => now()],
                  ['name' => 'Operator', 'auth_name' => 'operator', 'created_at' => now(), 'updated_at' => now()],
                  ['name' => 'Officer', 'auth_name' => 'officer', 'created_at' => now(), 'updated_at' => now()],
                  ['name' => 'Registrar', 'auth_name' => 'registrar', 'created_at' => now(), 'updated_at' => now()],
                  ['name' => 'Subject Committee', 'auth_name' => 'subject_committee', 'created_at' => now(), 'updated_at' => now()],
                  ['name' => 'Exam Committee', 'auth_name' => 'exam_committee', 'created_at' => now(), 'updated_at' => now()],
                  ['name' => 'Council', 'auth_name' => 'council', 'created_at' => now(), 'updated_at' => now()],
-                 ['name' => 'Admin', 'auth_name' => 'admin', 'created_at' => now(), 'updated_at' => now()]];
+                 ['name' => 'Admin', 'auth_name' => 'admin', 'created_at' => now(), 'updated_at' => now()],
+                 ['name' => 'Admit Card reader', 'auth_name' => 'admit_card_reader', 'created_at' => now(), 'updated_at' => now()]
+                ];
         Role::insert($data);
     }
 }

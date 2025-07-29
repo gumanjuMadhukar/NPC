@@ -35,7 +35,7 @@ class AccountController extends Controller
         $page_title = "Change Password";
         return view('admin.account.change_password', compact('nav', 'sub_nav', 'page_title'));
     }
-    
+
     public function updatePassword(ChangePasswordRequest $request)
     {
         return $this->service->updatePassword($request->validated());

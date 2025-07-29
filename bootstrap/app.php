@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('council')
                 ->namespace('App\Http\Controllers\Council')
                 ->group(base_path('routes/council.php'));
-                
+
             Route::middleware('student')
                 ->prefix('student')
                 ->namespace('App\Http\Controllers\Student')
@@ -34,21 +34,26 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('registrar')
                 ->namespace('App\Http\Controllers\Registrar')
                 ->group(base_path('routes/registrar.php'));
-                
+
             Route::middleware('subject_committee')
                 ->prefix('subject_committee')
                 ->namespace('App\Http\Controllers\SubjectCommittee')
                 ->group(base_path('routes/subjectcommittee.php'));
-                
+
             Route::middleware('exam_committee')
                 ->prefix('exam_committee')
                 ->namespace('App\Http\Controllers\ExamCommittee')
                 ->group(base_path('routes/examcommittee.php'));
-                
+
             Route::middleware('admin')
                 ->prefix('admin')
                 ->namespace('App\Http\Controllers\Admin')
                 ->group(base_path('routes/admin.php'));
+
+            Route::middleware('admit_card_reader')
+                ->prefix('admit_card_reader')
+                ->namespace('App\Http\Controllers\AdmitCardReader')
+                ->group(base_path('routes/admitcardreader.php'));
 
             Route::middleware(['api', 'auth.api'])
                 ->prefix(('api'))
@@ -73,7 +78,7 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HSTS::class,
             \App\Http\Middleware\SecureHeaders::class,
         ]);
-        
+
         $middleware->appendToGroup('api', [
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\ApiKeyMiddleware::class,
@@ -155,14 +160,24 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
 
+        $middleware->appendToGroup('admit_card_reader', [
+            \Illuminate\Cookie\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ]);
+
         $middleware->alias([
             'auth.admin' => \App\Http\Middleware\AdminAuthenticate::class,
+            'auth.admit_card_reader' => \App\Http\Middleware\AdmitCardReaderAuthenticate::class,
             'auth.student' => \App\Http\Middleware\StudentAuthenticate::class,
             'auth.operator' => \App\Http\Middleware\OperatorAuthenticate::class,
             'auth.officer' => \App\Http\Middleware\OfficerAuthenticate::class,
             'auth.registrar' => \App\Http\Middleware\RegistrarAuthenticate::class,
             'auth.subject_committee' => \App\Http\Middleware\SubjectCommitteeAuthenticate::class,
-            'auth.exam_committee' => \App\Http\Middleware\ExamCommitteeAuthenticate::class,  
+            'auth.exam_committee' => \App\Http\Middleware\ExamCommitteeAuthenticate::class,
             'auth.council' => \App\Http\Middleware\CouncilAuthenticate::class,
             'auth.api' => \App\Http\Middleware\ApiKeyMiddleware::class,
         ]);
