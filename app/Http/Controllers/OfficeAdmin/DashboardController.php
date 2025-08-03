@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $per_page = "";
         $page = $request->page ?? 1;
         $data['q'] = $request->q ?? '';
-        $data['user'] = 'officeadmin';
+        $data['user'] = 'office_admin';
         $data['result'] = $this->service->list($per_page, $page, $data['q']);
         return view('officeadmin.dashboard.index', $data);
     }

@@ -8,7 +8,7 @@
                             <h3>{{$page_title}}</h3>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-6">
-                            <a href="{{route('operator-exam-addedit')}}" class="btn btn-primary float-end">
+                            <a href="{{$action}}" class="btn btn-primary float-end">
                                 Add New
                             </a>
                         </div>

@@ -45,6 +45,9 @@ class AuthController extends Controller
         if (Auth::guard('exam_committee')->id()) {
             return redirect(route('exam_committee-dashboard'));
         }
+        if (Auth::guard('office_admin')->id()) {
+            return redirect(route('office_admin-dashboard'));
+        }
 
 //         $profiles = Profile::all();
 //         foreach($profiles as $profile) {

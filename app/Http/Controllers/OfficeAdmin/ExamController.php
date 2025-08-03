@@ -20,6 +20,7 @@ class ExamController extends Controller
         $data['nav'] = 'exam';
         $data['sub_nav'] = '';
         $data['page_title'] = 'Exam';
+        $data['action'] = route('office_admin-exam-addedit');
         $per_page = 10;
         $page =  $request->page ?? 1;
         $data['q'] = $request->q ?? '';

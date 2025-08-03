@@ -10,12 +10,49 @@
                         <i class="mdi mdi-view-dashboard-outline"></i><span> Dashboard </span>
                     </a>
                 </li>
+                <li class="@if ($nav == 'applicant') menuitem-active @endif">
+                    <a class="@if ($nav == 'applicant') active @endif" href="#applicants"
+                        data-bs-toggle="collapse">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span> Applicants </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="applicants">
+                        <ul class="nav-second-level">
+                            <li class="@if ($nav == 'appplicantlist/approved_list') menuitem-active @endif">
+                                <a class="@if ($nav == 'applicant-approved-list') active @endif"
+                                    href="{{ route('office_admin-applicant-approved-list') }}">
+                                    <i class="mdi mdi-view-dashboard-outline"></i><span> Approved By Me</span>
+                                </a>
+                            </li>
+                            <li class="@if ($nav == 'appplicantlist/rejected_list') menuitem-active @endif">
+                                <a class="@if ($nav == 'applicant-rejected-list') active @endif"
+                                    href="{{ route('office_admin-applicant-rejected-list') }}">
+                                    <i class="mdi mdi-view-dashboard-outline"></i><span> Rejected By Me</span>
+                                </a>
+                            </li>
+                            <li class="@if ($nav == 'appplicantlist/pending_list') menuitem-active @endif">
+                                <a class="@if ($nav == 'applicant-pending-list') active @endif"
+                                    href="{{ route('office_admin-applicant-pending-list') }}">
+                                    <i class="mdi mdi-view-dashboard-outline"></i><span> Pending List</span>
+                                </a>
+                            </li>
+                            <li class="@if ($nav === 'appplicantlist') menuitem-active @endif">
+                                <a class="@if ($nav == 'applicant-list') active @endif"
+                                    href="{{ route('office_admin-applicant-list') }}">
+                                    <i class="mdi mdi-view-dashboard-outline"></i><span> New Applicants</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="@if ($nav == 'account') menuitem-active @endif">
                     <a class="@if ($nav == 'account') active @endif"
                         href="{{ route('office_admin-account-setting') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i><span> My Profile </span>
                     </a>
                 </li>
+
                 <li class="@if ($nav == 'exam') menuitem-active @endif">
                     <a class="@if ($nav == 'exam') active @endif" href="{{ route('office_admin-exam') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i><span> Exam</span>

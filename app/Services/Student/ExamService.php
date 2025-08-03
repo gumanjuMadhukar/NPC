@@ -108,11 +108,11 @@ class ExamService
 
             if ($exam_status) {
                 $exam_apply->status  = 're-exam';
-                $exam_apply->state   = 'operator';
+                $exam_apply->state   = 'office_admin';
                 $exam_apply->attempt = $exam_status->attempt + 1;
             } else {
                 $exam_apply->status  = 'progress';
-                $exam_apply->state   = 'operator';
+                $exam_apply->state   = 'office_admin';
                 $exam_apply->attempt = 1;
             }
             $exam_apply->save();

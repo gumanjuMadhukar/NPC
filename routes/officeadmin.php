@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OfficeAdmin\AccountController;
+use App\Http\Controllers\OfficeAdmin\ApplicantController;
 use App\Http\Controllers\OfficeAdmin\CollegeController;
 use App\Http\Controllers\OfficeAdmin\DashboardController;
 use App\Http\Controllers\OfficeAdmin\DistrictController;
@@ -18,6 +19,38 @@ Route::group(['middleware' => 'auth.office_admin'], function () {
     Route::prefix('exam')->group(function () {
         Route::get('/detail/{id}', [DashBoardController::class, 'examDetail'])->name('office_admin-dashboard-exam-detail');
         Route::get('/export', [DashBoardController::class, 'export'])->name('office_admin-dashboard-exam-export');
+    });
+    Route::prefix('applicant')->group(function () {
+        Route::get('/', [ApplicantController::class,'myList'])->name('office_admin-applicant-list');
+        Route::get('/search', [ApplicantController::class,'list'])->name('office_admin-all-applicant-list');
+        Route::get('/state/{exam_id}',[DashBoardController::class, 'stateWiseList'])->name('office_admin-dashboard-exam-statewise-detail');
+        Route::get('/approved_list', [ApplicantController::class,'approvedList'])->name('office_admin-applicant-approved-list');
+        Route::get('/rejected_list', [ApplicantController::class,'rejectedList'])->name('office_admin-applicant-rejected-list');
+        Route::get('/pending_list', [ApplicantController::class,'pendingList'])->name('office_admin-applicant-pending-list');
+        Route::get('/profile/{id}', [ApplicantController::class, 'profile'])->name('office_admin-applicant-profile');
+        Route::get('/export', [ApplicantController::class, 'export'])->name('office_admin-applicant-export');
+        Route::get('/export/program_wise', [ApplicantController::class, 'export_program_wise'])->name('office_admin-applicant-programwise-export');
+        Route::get('/forward_reexam', [ApplicantController::class, 'fowrardReExam'])->name('office_admin-fowrard-reexam');
+        Route::post('/selected_forward_reexam', [ApplicantController::class, 'selectedFowrardReExam'])->name('office_admin-selected-fowrard-reexam');
+        Route::get('/status', [ApplicantController::class, 'status'])->name('office_admin-applicant-status');
+        Route::post('/save-status', [ApplicantController::class, 'statusSave'])->name('office_admin-applicant-save-status');
+        Route::post('/save-state', [ApplicantController::class, 'stateSave'])->name('office_admin-applicant-save-state');
+        Route::get('/personal-info/{id}', [ApplicantController::class, 'personalInfo'])->name('office_admin-applicant-personal-info');
+        Route::post('/save-personal', [ApplicantController::class, 'savePersonalInfo'])->name('office_admin-applicant-save-personal');
+        Route::get('/tslc/{id}', [ApplicantController::class, 'tslc'])->name('office_admin-applicant-tslc');
+        Route::post('/save-tslc', [ApplicantController::class, 'saveTslc'])->name('office_admin-applicant-save-tslc');
+        Route::get('/slc/{id}', [ApplicantController::class, 'slc'])->name('office_admin-applicant-slc');
+        Route::post('/save-slc', [ApplicantController::class, 'saveSlc'])->name('office_admin-applicant-save-slc');
+        Route::get('/pcl/{id}', [ApplicantController::class, 'pcl'])->name('office_admin-applicant-pcl');
+        Route::post('/save-pcl', [ApplicantController::class, 'savePcl'])->name('office_admin-applicant-save-pcl');
+        Route::get('/bachelor/{id}', [ApplicantController::class, 'bachelor'])->name('office_admin-applicant-bachelor');
+        Route::post('/save-bachelor', [ApplicantController::class, 'saveBachelor'])->name('office_admin-applicant-save-bachelor');
+        Route::get('/master/{id}', [ApplicantController::class, 'master'])->name('office_admin-applicant-master');
+        Route::post('/save-master', [ApplicantController::class, 'saveMaster'])->name('office_admin-applicant-save-master');
+        Route::get('/apply-form/{id}', [ApplicantController::class, 'applyForm'])->name('office_admin-applicant-apply-form');
+        Route::post('/edit-apply', [ApplicantController::class, 'editApply'])->name('office_admin-applicant-edit-apply');
+        Route::post('/delete', [ApplicantController::class, 'delete'])->name('office_admin-applicant-delete-application');
+        Route::get('/admitcard/{exam_apply_id}', [ApplicantController::class, 'admitCard'])->name('office_admin-applicant-admitcard');
     });
     Route::prefix('account')->group(function () {
         Route::get('/', [AccountController::class, 'index'])->name('office_admin-account-setting');
