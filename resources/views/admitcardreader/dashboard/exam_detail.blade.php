@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admitcardreader.layout')
 @section('content')
 <div class="content" id="exam-detail-page">
     <div class="container-fluid">
@@ -10,7 +10,7 @@
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <h3>{{ $page_title }} - {{$exam_name}}</h3>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6"> <a href="{{route('admin-dashboard-exam-export', ['exam_id' => $exam_id])}}"
+                            <div class="col-md-6 col-sm-6 col-xs-6"> <a href="{{route('admit_card_reader-dashboard-exam-export', ['exam_id' => $exam_id])}}"
                                     class="btn btn-primary float-end">
                                     Export Applicant
                                 </a>
@@ -149,7 +149,7 @@
                             <td><strong>{{$program['program_id']}}</strong></td>
                             <td><strong>{{$program['program_name']}}</strong></td>
                             <td><strong>{{$program['count']}}</strong></td>
-                            {{-- <td><a href="{{ route('admin-dashboard-program-detail', ['program_id' => $program['program_id'], 'exam_id' => $exam_id]) }}"><i
+                            {{-- <td><a href="{{ route('admit_card_reader-dashboard-program-detail', ['program_id' => $program['program_id'], 'exam_id' => $exam_id]) }}"><i
                                 class="fas fa-eye"></i></strong></a></td> --}}
                         </tr>
                         @endforeach

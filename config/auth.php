@@ -86,6 +86,11 @@ return [
             'provider' => 'users',
         ],
 
+        'office_admin' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'api' => [
             'driver' => 'sanctum',
             'provider' => 'users',

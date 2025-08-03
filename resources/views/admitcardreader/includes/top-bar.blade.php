@@ -6,7 +6,7 @@ $user = Auth::guard('admit_card_reader')->user();
     <ul class="list-unstyled topnav-menu float-end mb-0">
         <li>
             <a class="nav-link">
-               {{Auth::guard('admit_card_reader')->user()->name}}  (<b>Admin</b>)
+               {{Auth::guard('admit_card_reader')->user()->name}}  (<b>{{Auth::guard('admit_card_reader')->user()->name}}</b>)
             </a>
         </li>
         <li>

@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('admitcardreader.layout')
 @section('content')
 <div class="content">
     <div class="container-fluid">
@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="mb-3">My Profile</h3>
-                        <form id="frm_profile" method="post" action="{{ route('admin-account-store') }}">
+                        <form id="frm_profile" method="post" action="{{ route('admit_card_reader-account-store') }}">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
@@ -35,7 +35,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="mb-3">Change Password</h3>
-                        <form id="frm_password" method="post" action="{{ route('admin-account-update-password') }}">
+                        <form id="frm_password" method="post" action="{{ route('admit_card_reader-account-update-password') }}">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Old Password</label>
@@ -62,5 +62,5 @@
     </div>
     @endsection
     @section('footer-scripts')
-    @include('admin.account.js.index')
+    @include('admitcardreader.account.js.index')
     @endsection

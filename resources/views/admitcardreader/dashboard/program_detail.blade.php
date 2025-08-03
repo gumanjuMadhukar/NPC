@@ -1,4 +1,4 @@
-@extends('operator.layout')
+@extends('admitcardreader.layout')
 @section('content')
     <div class="content" id="program-detail-page">
         <div class="container-fluid">
@@ -63,7 +63,7 @@
                                                     <td><strong>{{ $program_wise->created_at }}</strong></td>
                                                     <td><strong>{{ $program_wise->program->name }}</strong></td>
                                                     <td><a
-                                                            href="{{ route('operator-applicant-profile', $program_wise->user->id) }}"><i
+                                                            href="{{ route('admit_card_reader-applicant-profile', $program_wise->user->id) }}"><i
                                                                 class="fas fa-eye"></i></a></td>
                                                 </tr>
                                             @endforeach

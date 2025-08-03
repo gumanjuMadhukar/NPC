@@ -6,13 +6,13 @@
         <div id="sidebar-menu">
             <ul id="side-menu">
                 <li class="@if ($nav == 'dashboard') menuitem-active @endif">
-                    <a class="@if ($nav == 'dashboard') active @endif" href="{{ route('admin-dashboard') }}">
+                    <a class="@if ($nav == 'dashboard') active @endif" href="{{ route('admit_card_reader-dashboard') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i><span> Dashboard </span>
                     </a>
                 </li>
                 <li class="@if ($nav == 'account') menuitem-active @endif">
                     <a class="@if ($nav == 'account') active @endif"
-                        href="{{ route('admin-account-setting') }}">
+                        href="{{ route('admit_card_reader-account-setting') }}">
                         <i class="mdi mdi-view-dashboard-outline"></i><span> My Profile </span>
                     </a>
                 </li>

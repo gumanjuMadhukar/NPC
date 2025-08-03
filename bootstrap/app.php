@@ -55,6 +55,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->namespace('App\Http\Controllers\AdmitCardReader')
                 ->group(base_path('routes/admitcardreader.php'));
 
+            Route::middleware('office_admin')
+                ->prefix('office_admin')
+                ->namespace('App\Http\Controllers\OfficeAdmin')
+                ->group(base_path('routes/officeadmin.php'));
+
             Route::middleware(['api', 'auth.api'])
                 ->prefix(('api'))
                 ->namespace('App\Http\Controllers\Api')
@@ -168,10 +173,19 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
+        $middleware->appendToGroup('office_admin', [
+            \Illuminate\Cookie\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ]);
 
         $middleware->alias([
             'auth.admin' => \App\Http\Middleware\AdminAuthenticate::class,
             'auth.admit_card_reader' => \App\Http\Middleware\AdmitCardReaderAuthenticate::class,
+            'auth.office_admin' => \App\Http\Middleware\OfficeAdminAuthenticate::class,
             'auth.student' => \App\Http\Middleware\StudentAuthenticate::class,
             'auth.operator' => \App\Http\Middleware\OperatorAuthenticate::class,
             'auth.officer' => \App\Http\Middleware\OfficerAuthenticate::class,
