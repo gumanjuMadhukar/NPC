@@ -85,22 +85,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="mb-3">
-                                    <label class="form-label">
-                                        Subject Committee</label>
-                                    <select class="form-control select2" name="subject_committee_id">
-                                        @if($subject_committees->count() > 0)
-                                        @foreach($subject_committees as $subject_committee)
-                                        <option value="{{$subject_committee->id}}" @if($row && $row->
-                                            subject_committee_id == $subject_committee->id) selected
-                                            @endif>{{$subject_committee->name}}</option>
-                                        @endforeach
-                                        @endif
-
-                                    </select>
-                                </div>
-                            </div>
+                           
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-6">

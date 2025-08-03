@@ -19,8 +19,8 @@ class AccountController extends Controller
         $nav = 'account';
         $sub_nav = '';
         $page_title = 'My Account';
-		$data['user'] = Auth::guard('admin')->user();
-        return view('admin.account.index', compact('nav', 'sub_nav', 'page_title'), $data);
+		$data['user'] = Auth::guard('admit_card_reader')->user();
+        return view('admitcardreader.account.index', compact('nav', 'sub_nav', 'page_title'), $data);
     }
 
     public function store(ProfileRequest $request)
@@ -33,7 +33,7 @@ class AccountController extends Controller
         $nav = 'account';
         $sub_nav = '';
         $page_title = "Change Password";
-        return view('admin.account.change_password', compact('nav', 'sub_nav', 'page_title'));
+        return view('admitcardreader.account.change_password', compact('nav', 'sub_nav', 'page_title'));
     }
 
     public function updatePassword(ChangePasswordRequest $request)
@@ -43,7 +43,7 @@ class AccountController extends Controller
 
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('admit_card_reader')->logout();
         return redirect(route('auth-login'));
     }
 

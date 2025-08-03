@@ -14,7 +14,7 @@ $(document).ready(function() {
             success: function(data) {
                 toastr["success"](data.message);
                 setTimeout(function() {
-                    window.location.href = "{{route('admin-account-setting')}}";
+                    window.location.href = "{{route('admit_card_reader-account-setting')}}";
                 }, 1000);
             },
             error: function(xhr) {
@@ -44,7 +44,7 @@ $(document).ready(function() {
                     toastr["info"]('Your are being logout now.');
                 }, 1000);
                 setTimeout(function() {
-                    window.location.href = "{{route('admin-logout')}}";
+                    window.location.href = "{{route('admit_card_reader-logout')}}";
                 }, 2000);
             },
             error: function(xhr) {
