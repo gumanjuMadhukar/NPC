@@ -23,8 +23,8 @@ class PersonalRequest extends RestRequest
     public function rules()
     {
         return [
-            'profile_picture' => 'required',
             'level' => 'required',
+            'profile_picture' => 'required',
             'first_name' => 'required',
             'middle_name' => 'sometimes',
             'last_name' => 'required',
@@ -33,16 +33,21 @@ class PersonalRequest extends RestRequest
             'last_name_nep' => 'required',
             'phone_number' => 'required',
             'emergency_number' => 'required',
-            'dob_eng' => 'required',
             'dob_nep' => 'required',
+            'dob_eng' => 'required',
             'sex' => 'required',
-            'marital_status' => 'required',
             'ethinic' => 'required',
+            'marital_status' => 'required',
+            'province' => 'required',
+            'district' => 'required',
+            'municipality' => 'required',
+            'ward_no' => 'required|integer',
             'citizenship_number' => 'required',
             'citizenship_issue_date' => 'required',
             'citizenship_issue_district' => 'required',
             'citizenship_front' => 'required',
             'citizenship_back' => 'required',
+            'signature_image' => 'required',
 
             // 'passport_number' => 'required',
             // 'passport_issue_date' => 'required',
@@ -52,12 +57,7 @@ class PersonalRequest extends RestRequest
 
             // 'visa_image' => 'required',
 
-            'signature_image' => 'required',
 
-            'province' => 'required',
-            'district' => 'required',
-            'municipality' => 'required',
-            'ward_no' => 'required|integer',
         ];
     }
 

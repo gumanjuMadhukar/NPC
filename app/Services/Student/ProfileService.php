@@ -160,10 +160,20 @@ class ProfileService
             }
             $user_info->father_name = $request['father_name'];
             $user_info->father_name_nep = $request['father_name_nep'];
-            $user_info->grandfather_name = $request['grandfather_name'];
-            $user_info->grandfather_name_nep = $request['grandfather_name_nep'];
+            $user_info->father_number = $request['father_number'];
+            $user_info->father_email = $request['father_email'];
             $user_info->mother_name = $request['mother_name'];
             $user_info->mother_name_nep = $request['mother_name_nep'];
+            $user_info->mother_number = $request['mother_number'];
+            $user_info->mother_email = $request['mother_email'];
+            $user_info->grandfather_name = $request['grandfather_name'];
+            $user_info->grandfather_name_nep = $request['grandfather_name_nep'];
+            $user_info->grandfather_number = $request['grandfather_number'];
+            $user_info->grandfather_email = $request['grandfather_email'];
+            $user_info->spouse_name = $request['spouse_name'];
+            $user_info->spouse_name_nep = $request['spouse_name_nep'];
+            $user_info->spouse_number = $request['spouse_number'];
+            $user_info->spouse_email = $request['spouse_email'];
             $user_info->save();
             $response['data'] = $user_info;
             $response['message'] = 'Profile updated successfully';

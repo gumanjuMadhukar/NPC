@@ -25,10 +25,20 @@ class GuardianRequest extends RestRequest
         return [
             'father_name' => 'required',
             'father_name_nep' => 'required',
+            'father_number' => 'nullable',
+            'father_email' => 'nullable',
             'mother_name' => 'required',
             'mother_name_nep' => 'required',
+            'mother_number' => 'nullable',
+            'mother_email' => 'nullable',
             'grandfather_name' => 'required',
             'grandfather_name_nep' => 'required',
+            'grandfather_number' => 'nullable',
+            'grandfather_email' => 'nullable',
+            'spouse_name' => 'nullable',
+            'spouse_name_nep' => 'nullable',
+            'spouse_number' => 'nullable',
+            'spouse_email' => 'nullable',
         ];
     }
 }
