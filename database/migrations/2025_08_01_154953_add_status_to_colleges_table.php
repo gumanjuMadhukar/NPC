@@ -11,8 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('colleges', function (Blueprint $table) {
-            $table->boolean('status')->default(1)->after('name');
-
+            if (!Schema::hasColumn('colleges', 'status')) {
+                $table->boolean('status')->default(1)->after('name');
+            }
         });
     }
 
@@ -22,8 +23,9 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('colleges', function (Blueprint $table) {
-            $table->dropColumn('status');
-
+            if (Schema::hasColumn('colleges', 'status')) {
+                $table->dropColumn('status');
+            }
         });
     }
 };

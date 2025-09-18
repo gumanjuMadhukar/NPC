@@ -19,6 +19,8 @@ class UserInfo extends Model
 	'first_name_nep',
 	'middle_name_nep',
 	'last_name_nep',
+	'phone_number',
+	'emergency_number',
 	'dob_eng',
 	'dob_nep',
 	'sex',

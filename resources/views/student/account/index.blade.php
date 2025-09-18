@@ -3,7 +3,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
+            <!-- <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="card-body">
                         <h3 class="mb-3">My Account</h3>
@@ -30,7 +30,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="card-body">
@@ -57,8 +57,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     @endsection
     @section('footer-scripts')

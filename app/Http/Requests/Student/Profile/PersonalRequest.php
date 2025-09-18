@@ -31,6 +31,8 @@ class PersonalRequest extends RestRequest
             'first_name_nep' => 'required',
             'middle_name_nep' => 'sometimes',
             'last_name_nep' => 'required',
+            'phone_number' => 'required',
+            'emergency_number' => 'required',
             'dob_eng' => 'required',
             'dob_nep' => 'required',
             'sex' => 'required',
